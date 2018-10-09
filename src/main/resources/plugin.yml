@@ -1,0 +1,9 @@
+name: Partytool
+version: ${project.version}
+main: me.snicser.partytool.Partytool
+authors: [Snicser]
+description: Dit is een voorbeeld project voor DDG, geïnspriteerd door Snics (Ex - Developer DDG)
+
+commands:
+  partytool:
+    description: Zet de partytool aan of uit.
