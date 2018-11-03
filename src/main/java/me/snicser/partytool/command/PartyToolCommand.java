@@ -19,7 +19,7 @@ import org.bukkit.inventory.ItemStack;
  */
 public class PartyToolCommand implements CommandExecutor {
 
-    public static boolean isOn = false;
+    private boolean isOn = false;
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
