@@ -1,8 +1,8 @@
 name: Partytool
-version: ${project.version}
+version: 1.0.1
 main: me.snicser.partytool.Partytool
 authors: [Snicser]
-description: Dit is een voorbeeld project voor DDG, geïnspriteerd door Snics (Ex - Developer DDG)
+description: Private project. Geïnspriteerd door Ex-DDG Developer Snics
 
 commands:
   partytool:

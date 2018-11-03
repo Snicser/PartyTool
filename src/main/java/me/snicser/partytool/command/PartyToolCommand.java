@@ -2,7 +2,7 @@ package me.snicser.partytool.command;
 
 import me.snicser.partytool.util.C;
 import me.snicser.partytool.util.Constants;
-import me.snicser.partytool.util.ItemUtil;
+import me.snicser.partytool.util.ItemBuilder;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -19,12 +19,12 @@ import org.bukkit.inventory.ItemStack;
  */
 public class PartyToolCommand implements CommandExecutor {
 
-    private static boolean isOn = false;
+    public static boolean isOn = false;
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (!(sender instanceof Player)) {
-            sender.sendMessage(Constants.PREFIX + ChatColor.RED + "Alleen spelers kunnen de partyool gebruiken!");
+            sender.sendMessage(Constants.PREFIX + ChatColor.RED + "Alleen spelers kunnen de partytool gebruiken!");
             return true;
         }
         Player player = (Player) sender;
@@ -33,10 +33,10 @@ public class PartyToolCommand implements CommandExecutor {
             if (player.hasPermission("partytool.use")) {
                 if (args.length == 1) {
                     if (args[0].equalsIgnoreCase("aan")) {
-                        handleIfOn(player);
+                        handleOn(player);
                         return true;
                     } else if (args[0].equalsIgnoreCase("uit")) {
-                        handleIfOff(player);
+                        handleOff(player);
                         return true;
                     }
                 } else {
@@ -51,14 +51,14 @@ public class PartyToolCommand implements CommandExecutor {
         return false;
     }
 
-    private boolean handleIfOn(Player player) {
+    private boolean handleOn(Player player) {
         if (isOn) {
             player.sendMessage(Constants.PREFIX + ChatColor.RED + "De partytool is al aan.");
             return true;
         } else {
             isOn = true;
 
-            ItemStack fireCharge = ItemUtil.createSingleItem(Material.FIREWORK_CHARGE, C.TAC("&c&lPartyTool"), 1, ChatColor.WHITE + "Rechtermuis knop voor gebruik.");
+            ItemStack fireCharge = new ItemBuilder(Material.FIREWORK_CHARGE, 1).name(Constants.TOOL_NAME).addLore(ChatColor.WHITE + "Rechtermuis knop voor gebruik.").build();
 
             for (Player onlinePlayers : Bukkit.getOnlinePlayers()) {
                 onlinePlayers.sendMessage(Constants.PREFIX + ChatColor.GREEN + "De partytool is aan gezet door: " + ChatColor.RED + player.getName());
@@ -68,7 +68,7 @@ public class PartyToolCommand implements CommandExecutor {
         }
     }
 
-    private boolean handleIfOff(Player player) {
+    private boolean handleOff(Player player) {
         if (!isOn) {
             player.sendMessage(Constants.PREFIX + ChatColor.RED + "De partytool is al uit.");
             return true;
@@ -77,7 +77,9 @@ public class PartyToolCommand implements CommandExecutor {
 
             for (Player onlinePlayers : Bukkit.getOnlinePlayers()) {
                 onlinePlayers.sendMessage(Constants.PREFIX + ChatColor.GREEN + "De partytool is uit gezet door: " + ChatColor.RED + player.getName());
-                onlinePlayers.getInventory().remove(Material.FIREWORK_CHARGE);
+                if (onlinePlayers.getInventory().contains(Material.FIREWORK_CHARGE)) {
+                    onlinePlayers.getInventory().remove(Material.FIREWORK_CHARGE);
+                }
             }
             return true;
         }

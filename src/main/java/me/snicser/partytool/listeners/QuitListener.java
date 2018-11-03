@@ -17,6 +17,8 @@ public class QuitListener implements Listener {
     public void onPlayerQuit(PlayerQuitEvent event) {
         Player player = event.getPlayer();
 
-        player.getInventory().remove(Material.FIREWORK_CHARGE);
+        if (player.getInventory().contains(Material.FIREWORK_CHARGE)) {
+            player.getInventory().remove(Material.FIREWORK_CHARGE);
+        }
     }
 }
