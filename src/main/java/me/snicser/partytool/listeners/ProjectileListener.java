@@ -1,16 +1,19 @@
 package me.snicser.partytool.listeners;
 
+import me.snicser.partytool.util.C;
 import me.snicser.partytool.util.Constants;
 import org.bukkit.*;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
-import org.bukkit.entity.Projectile;
 import org.bukkit.entity.Snowball;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 
 /**
  * Created by: Snicser
@@ -19,6 +22,9 @@ import org.bukkit.event.player.PlayerInteractEvent;
  */
 public class ProjectileListener implements Listener {
 
+    private Map<UUID, Long> cooldown = new HashMap<>();
+
+    @Deprecated
     @EventHandler
     public void onPlayerInteract(PlayerInteractEvent event) {
         Player player = event.getPlayer();
@@ -27,10 +33,21 @@ public class ProjectileListener implements Listener {
         if (!(event.getAction() == Action.RIGHT_CLICK_AIR)) return;
         if (!(event.getItem().getType().equals(Material.FIREWORK_CHARGE))) return;
         if (!(player.getItemInHand().getItemMeta().getDisplayName().equals(Constants.TOOL_NAME))) return;
+
+        if (cooldown.containsKey(player.getUniqueId())) {
+            long secondsOver = ((cooldown.get(player.getUniqueId()) / 1000) + 5) - (System.currentTimeMillis() / 1000);
+            if (secondsOver > 0) {
+                player.sendMessage(Constants.PREFIX + C.TAC("&fJe kan de partytool over &c" + secondsOver + " &fweer gebruiken."));
+                return;
+            }
+        }
+
         Snowball snowball = player.launchProjectile(Snowball.class);
         snowball.setVelocity(player.getLocation().getDirection().multiply(0.8));
+        cooldown.put(player.getUniqueId(), System.currentTimeMillis());
     }
 
+    @Deprecated
     @EventHandler
     public void onProjectileHit(ProjectileHitEvent event) {
         if (event.getEntity() instanceof Snowball && event.getEntity().getShooter() instanceof Player) {

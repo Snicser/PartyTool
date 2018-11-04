@@ -51,10 +51,9 @@ public class PartyToolCommand implements CommandExecutor {
         return false;
     }
 
-    private boolean handleOn(Player player) {
+    private void handleOn(Player player) {
         if (isOn) {
             player.sendMessage(Constants.PREFIX + ChatColor.RED + "De partytool is al aan.");
-            return true;
         } else {
             isOn = true;
 
@@ -64,14 +63,12 @@ public class PartyToolCommand implements CommandExecutor {
                 onlinePlayers.sendMessage(Constants.PREFIX + ChatColor.GREEN + "De partytool is aan gezet door: " + ChatColor.RED + player.getName());
                 onlinePlayers.getInventory().setItem(0, fireCharge);
             }
-            return true;
         }
     }
 
-    private boolean handleOff(Player player) {
+    private void handleOff(Player player) {
         if (!isOn) {
             player.sendMessage(Constants.PREFIX + ChatColor.RED + "De partytool is al uit.");
-            return true;
         } else {
             isOn = false;
 
@@ -81,7 +78,6 @@ public class PartyToolCommand implements CommandExecutor {
                     onlinePlayers.getInventory().remove(Material.FIREWORK_CHARGE);
                 }
             }
-            return true;
         }
     }
 }
