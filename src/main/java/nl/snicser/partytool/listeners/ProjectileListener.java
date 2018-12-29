@@ -1,7 +1,7 @@
-package io.github.partytool.listeners;
+package nl.snicser.partytool.listeners;
 
-import io.github.partytool.util.C;
-import io.github.partytool.util.Constants;
+import nl.snicser.partytool.util.C;
+import nl.snicser.partytool.util.Constants;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Snowball;

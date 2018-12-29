@@ -1,6 +1,6 @@
-package io.github.partytool.listeners;
+package nl.snicser.partytool.listeners;
 
-import io.github.partytool.Partytool;
+import nl.snicser.partytool.PartyTool;
 
 /**
  * Created by: Snicser
@@ -9,9 +9,9 @@ import io.github.partytool.Partytool;
  */
 public class EventManager {
 
-    private final Partytool plugin;
+    private final PartyTool plugin;
 
-    public EventManager(Partytool plugin) {
+    public EventManager(PartyTool plugin) {
         this.plugin = plugin;
     }
 

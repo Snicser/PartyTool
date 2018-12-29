@@ -1,4 +1,4 @@
-package io.github.partytool.listeners;
+package nl.snicser.partytool.listeners;
 
 import org.bukkit.Material;
 import org.bukkit.entity.Player;

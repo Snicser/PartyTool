@@ -1,6 +1,6 @@
-package io.github.partytool.command;
+package nl.snicser.partytool.command;
 
-import io.github.partytool.Partytool;
+import nl.snicser.partytool.PartyTool;
 
 /**
  * Created by: Snicser
@@ -9,9 +9,9 @@ import io.github.partytool.Partytool;
  */
 public class CommandManager {
 
-    private final Partytool plugin;
+    private final PartyTool plugin;
 
-    public CommandManager(Partytool plugin) {
+    public CommandManager(PartyTool plugin) {
         this.plugin = plugin;
     }
 

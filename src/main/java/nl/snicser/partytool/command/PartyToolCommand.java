@@ -1,8 +1,8 @@
-package io.github.partytool.command;
+package nl.snicser.partytool.command;
 
-import io.github.partytool.util.C;
-import io.github.partytool.util.Constants;
-import io.github.partytool.util.ItemBuilder;
+import nl.snicser.partytool.util.C;
+import nl.snicser.partytool.util.Constants;
+import nl.snicser.partytool.util.ItemBuilder;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
