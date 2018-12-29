@@ -1,11 +1,11 @@
-package me.snicser.partytool.util;
+package nl.snicser.partytool.util;
 
 /**
  * Created by: Snicser
  * Project: PartyTool
  * Date: 20-9-2018
  */
-public  final class Constants {
+public final class Constants {
 
     private Constants() {}
 

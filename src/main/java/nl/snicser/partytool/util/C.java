@@ -1,4 +1,4 @@
-package me.snicser.partytool.util;
+package nl.snicser.partytool.util;
 
 import org.bukkit.ChatColor;
 

@@ -1,4 +1,4 @@
-package me.snicser.partytool.listeners;
+package io.github.partytool.listeners;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

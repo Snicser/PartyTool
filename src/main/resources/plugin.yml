@@ -1,6 +1,6 @@
-name: Partytool
-version: 1.2.1
-main: me.snicser.partytool.Partytool
+name: PartyTool
+version: 1.2.2
+main: nl.snicser.partytool.PartyTool
 authors: [Snicser]
 description: Private project. Geïnspriteerd door Ex-DDG Developer Snics
 

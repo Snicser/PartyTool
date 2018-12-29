@@ -1,4 +1,4 @@
-package me.snicser.partytool.util;
+package nl.snicser.partytool.util;
 
 import org.bukkit.*;
 import org.bukkit.block.banner.Pattern;
@@ -21,6 +21,9 @@ import java.util.Map;
  * Created by: Snicser
  * Project: PartyTool
  * Date: 23-10-2018
+ *
+ * https://github.com/Snicser/AdvancedItemBuilder/blob/master/ItemBuilder.java
+ * Original maker: Jordieh (https://github.com/Jordieh)
  */
 public class ItemBuilder {
 

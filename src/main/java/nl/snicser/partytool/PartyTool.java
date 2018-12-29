@@ -1,19 +1,24 @@
-package me.snicser.partytool;
+package nl.snicser.partytool;
 
-import me.snicser.partytool.command.CommandManager;
-import me.snicser.partytool.listeners.EventManager;
-import me.snicser.partytool.util.Constants;
+import nl.snicser.partytool.command.CommandManager;
+import nl.snicser.partytool.listeners.EventManager;
+import nl.snicser.partytool.util.Constants;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public final class Partytool extends JavaPlugin {
+public final class PartyTool extends JavaPlugin {
+
+    private CommandManager commandManager;
+    private EventManager eventManager;
 
     @Override
     public void onEnable() {
-        CommandManager.registerAll(this);
-        EventManager.registerAll(this);
+        init();
+
+        commandManager.registerAll();
+        eventManager.registerAll();
 
         getServer().getConsoleSender().sendMessage(Constants.PREFIX + ChatColor.GREEN + "PartyTool enabled!");
         getServer().getConsoleSender().sendMessage(Constants.PREFIX + ChatColor.GREEN + "Versie: " + getDescription().getVersion());
@@ -28,5 +33,10 @@ public final class Partytool extends JavaPlugin {
 
         getServer().getConsoleSender().sendMessage(Constants.PREFIX + ChatColor.RED + "PartyTool disabled!");
         getServer().getConsoleSender().sendMessage(Constants.PREFIX + ChatColor.RED + "Versie: " + getDescription().getVersion());
+    }
+
+    private void init() {
+        commandManager = new CommandManager(this);
+        eventManager = new EventManager(this);
     }
 }
