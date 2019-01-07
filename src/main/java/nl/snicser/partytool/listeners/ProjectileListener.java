@@ -58,7 +58,7 @@ public class ProjectileListener implements Listener {
                 Player hittedPlayer = (Player) event.getHitEntity();
                 hittedPlayer.playSound(hittedPlayer.getLocation(), Sound.BLOCK_ANVIL_HIT, 2F, 1F);
                 hittedPlayer.playEffect(hittedPlayer.getLocation(), Effect.SMOKE, 1000);
-                hittedPlayer.setVelocity(event.getHitEntity().getLocation().getDirection().setY(0.5).multiply(0.7));
+                hittedPlayer.setVelocity(hittedPlayer.getLocation().getDirection().setY(0.5).multiply(0.7));
             }
         }
     }
